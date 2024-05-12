@@ -1,45 +1,54 @@
+.container-navigation {
+  margin-bottom: 50px;
+}
 nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: #333;
     color: #fff;
-    padding: 10px 0;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 100;
   }
   
   h4 {
     margin: 0;
-    padding: 0 10px;
     cursor: pointer;
   }
-  
+  nav h4:hover {
+    cursor: pointer;
+    color: yellow;
+  }
  
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     nav {
+      max-width: 100%;
       flex-direction: row;
-      padding: 20px 0;
-    }
-  
-    h4 {
-      margin-bottom: 10px;
-      font-size: 18px;
+      padding: 10px 0;
     }
   }
 
-  @media (min-width: 768px) and ( max-width: 932px) {
+  @media (min-width: 768px) and ( max-width: 931px) {
     nav {
       flex-direction: row;
+      font-size: 14px;
       padding: 20px 0;
-    }
-  
-    h4 {
-      margin-bottom: 10px;
       font-size: 24px;
+      margin-bottom: 50px;
     }
+
+  }
+  
+  @media (min-width: 932px) {
+    nav {
+      flex-direction: row;
+      font-size: 14px;
+      padding: 20px 0;
+      font-size: 28px;
+    }
+
   }
   
