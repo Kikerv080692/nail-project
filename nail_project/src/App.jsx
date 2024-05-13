@@ -3,7 +3,7 @@ import './App.css'
 import Footer from './components/Contacts/Contacts.jsx'
 import Header from './components/Header/Header.jsx'
 import Price from './components/Price/Price.jsx'
-import Works from './components/Works/Works.jsx'
+import Nails from './components/Nails/Nails.jsx'
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
 
    <Nav/>
    <Header/>
-   <Works/>
+   <Nails/>
    
    <Price/>
    <Footer/>
