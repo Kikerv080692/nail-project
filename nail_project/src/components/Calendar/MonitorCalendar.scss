@@ -1,0 +1,33 @@
+.container-grid {
+    max-width: 430px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 2px;
+    padding: 5px 5px;
+    background: #404040;
+}
+
+.cell-wrapper {
+    min-width: 50px;
+    min-height: 80px;
+    background: #1E1F21;
+}
+.cell-weekend {
+    min-width: 50px;
+    min-height: 80px;
+    background: #272829;
+}
+
+.row-in-cell {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.day-wrapper {
+    height: 31px;
+    width: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
