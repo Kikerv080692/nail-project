@@ -6,6 +6,7 @@ import Price from "./components/Price/Price.jsx";
 import Nails from "./components/Nails/Nails.jsx";
 import moment from "moment";
 import Calendar from "./components/Calendar/Calendar.jsx";
+import { useState } from "react";
 
 // console.log(moment())
 // console.log(moment().startOf('month').startOf('week'))
@@ -27,8 +28,23 @@ import Calendar from "./components/Calendar/Calendar.jsx";
 // }
 
 function App() {
-  const startDay = moment().startOf("month").startOf("week");
+  const [today , setToday] = useState(moment())
+  const startDay = today.clone().startOf("month").startOf("week");
   const endDay = moment().endOf("month").endOf("week");
+
+  const prevHandlerDay = () => {
+    console.log('prev')
+    setToday((prev) => prev.clone().subtract(1, 'month'))
+  }
+  const todayHandlerDay = () => {
+    console.log('today')
+    setToday(moment())
+    
+  }
+  const nextHandlerDay = () => {
+    console.log('next')
+    setToday((prev) => prev.clone().add(1, 'month'))
+  }
   return (
     <>
       <Nav />
@@ -36,7 +52,7 @@ function App() {
       <Nails />
       <Price />
       <Footer />
-      <Calendar startDay={startDay} />
+      <Calendar startDay={startDay} today={today} prevHandlerDay={prevHandlerDay} todayHandlerDay={todayHandlerDay} nextHandlerDay={nextHandlerDay} />
     </>
   );
 }

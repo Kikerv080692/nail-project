@@ -1,9 +1,9 @@
 import React from 'react'
-
+import './HeaderCalendar.scss'
 function HeaderCalendar() {
   return (
-    <div>
-      
+    <div className='header-wrapper'>
+      <>Header</>
     </div>
   )
 }

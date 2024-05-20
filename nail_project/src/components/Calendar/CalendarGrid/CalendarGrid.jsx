@@ -1,5 +1,7 @@
 import React from "react";
-import "./MonitorCalendar.scss";
+import "./CalendarGrid.scss";
+import moment from "moment";
+
 // import styled from "styled-components";
 
 // const GridWrapper = styled.div `
@@ -10,7 +12,7 @@ import "./MonitorCalendar.scss";
 //     padding: 20px 20px;
 // `
 
-function MonitorCalendar({ startDay }) {
+function CalendarGrid({ startDay }) {
   const totalDays = 42;
   const day = startDay.clone();
   const daysArray = [
@@ -21,26 +23,30 @@ function MonitorCalendar({ startDay }) {
       }),
   ];
 
+  const isCurrentDay = (day) => moment().isSame(day, 'day');
+
   return (
-    <>
-      {/* <h1>Monitor</h1> */}
+   
       <div className="container-grid">
-        {daysArray.map((day, index) => {
-          const isWeekend = day.day() === 0 || day.day() === 6;
+        {daysArray.map((dayItem, index) => {
+          const isWeekend = dayItem.day() === 0 || dayItem.day() === 6;
           return (
             <div
-              className={isWeekend ? 'cell-weekend ': 'cell-wrapper'}
-              key={index}
+              className={isWeekend ? "cell-weekend " : "cell-wrapper"}
+              key={dayItem.unix()}
             >
               <div className="row-in-cell">
-                <div className="day-wrapper">{day.format("D")}</div>
+                <div className="day-wrapper">
+                  {!isCurrentDay(dayItem) && dayItem.format('D') }
+                  {isCurrentDay(dayItem) && <div className="current-day">{dayItem.format("D")}</div>}
+                </div>
               </div>
             </div>
           );
         })}
       </div>
-    </>
+   
   );
 }
 
-export default MonitorCalendar;
+export default CalendarGrid;
