@@ -10,7 +10,7 @@ function Calendar({startDay, today, prevHandlerDay, nextHandlerDay, todayHandler
     <div className='calendar-wrapper'>
       <HeaderCalendar/>
       <MonitorCalendar today={today} prevHandlerDay={prevHandlerDay} nextHandlerDay={nextHandlerDay} todayHandlerDay={todayHandlerDay}/>
-      <CalendarGrid startDay={startDay}/>
+      <CalendarGrid startDay={startDay} today={today}/>
       
     </div>
   )

@@ -12,7 +12,7 @@ import moment from "moment";
 //     padding: 20px 20px;
 // `
 
-function CalendarGrid({ startDay }) {
+function CalendarGrid({ startDay, today }) {
   const totalDays = 42;
   const day = startDay.clone();
   const daysArray = [
@@ -23,10 +23,22 @@ function CalendarGrid({ startDay }) {
       }),
   ];
 
-  const isCurrentDay = (day) => moment().isSame(day, 'day');
+  const isCurrentDay = (day) => moment().isSame(day, "day");
+  const isCurrentMonth = (day) => today.isSame(day, "month");
 
   return (
-   
+    <>
+      <div className="cell-wrapper-weekdays">
+        {Array.from({ length: 7 }).map((_, index) => (
+          <div className="wrapper-weekdays">
+          <div className="cell-wrapper-days" key={index}>
+            {moment()
+              .day(index + 1)
+              .format("ddd")}
+          </div>
+          </div>
+        ))}
+      </div>
       <div className="container-grid">
         {daysArray.map((dayItem, index) => {
           const isWeekend = dayItem.day() === 0 || dayItem.day() === 6;
@@ -36,16 +48,24 @@ function CalendarGrid({ startDay }) {
               key={dayItem.unix()}
             >
               <div className="row-in-cell">
-                <div className="day-wrapper">
-                  {!isCurrentDay(dayItem) && dayItem.format('D') }
-                  {isCurrentDay(dayItem) && <div className="current-day">{dayItem.format("D")}</div>}
+              <div
+                  className={`day-wrapper ${
+                    isCurrentMonth(dayItem)
+                      ? "current-month"
+                      : "other-month"
+                  }`}
+                >
+                  {!isCurrentDay(dayItem) && dayItem.format("D")}
+                  {isCurrentDay(dayItem) && (
+                    <div className="current-day">{dayItem.format("D")}</div>
+                  )}
                 </div>
               </div>
             </div>
           );
         })}
       </div>
-   
+    </>
   );
 }
 
