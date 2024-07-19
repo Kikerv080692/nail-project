@@ -1,45 +1,48 @@
-import React from 'react'
-import './Price.scss'
+
+import "./Price.scss";
+import * as SC from './Price.styled'
 
 
 function Price() {
+  
   return (
-    <div>
+    <SC.Wrapper id="price">
       <h1>Price</h1>
       <table>
         <tr>
-            <td>Маникюр</td>
-            <td>300</td>
+          <td>Маникюр</td>
+          <td>300</td>
         </tr>
         <tr>
-            <td>Маникюр с покрытием</td>
-            <td>450</td>
+          <td>Маникюр с покрытием</td>
+          <td>450</td>
         </tr>
         <tr>
-            <td>Наращивание</td>
-            <td>300</td>
+          <td>Наращивание</td>
+          <td>300</td>
         </tr>
         <tr>
-            <td>Педикюр</td>
-            <td>300</td>
+          <td>Педикюр</td>
+          <td>300</td>
         </tr>
         <tr>
-            <td>Педикюр с покрытием</td>
-            <td>300</td>
+          <td>Педикюр с покрытием</td>
+          <td>300</td>
         </tr>
         <tr>
-            <td>Снятие гель лака</td>
-            <td>300</td>
+          <td>Снятие гель лака</td>
+          <td>300</td>
         </tr>
         <tr>
-            <td>ремонт донаращивание</td>
-            <td>300</td>
+          <td>Ремонт донаращивание</td>
+          <td>300</td>
         </tr>
       </table>
-      <h3>Скидка на первое посещение 15%</h3>
-    </div>
-  )
+      <div className="discount">
+        <h3>Скидка на первое посещение 15%</h3>
+      </div>
+    </SC.Wrapper>
+  );
 }
 
-export default Price
-
+export default Price;

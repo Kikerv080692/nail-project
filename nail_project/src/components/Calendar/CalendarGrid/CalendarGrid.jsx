@@ -12,8 +12,7 @@ import moment from "moment";
 //     padding: 20px 20px;
 // `
 
-function CalendarGrid({ startDay, today }) {
-  const totalDays = 42;
+function CalendarGrid({ startDay, today, totalDays, events }) {
   const day = startDay.clone();
   const daysArray = [
     ...Array(totalDays)
@@ -30,17 +29,17 @@ function CalendarGrid({ startDay, today }) {
     <>
       <div className="cell-wrapper-weekdays">
         {Array.from({ length: 7 }).map((_, index) => (
-          <div className="wrapper-weekdays">
-          <div className="cell-wrapper-days" key={index}>
-            {moment()
-              .day(index + 1)
-              .format("ddd")}
-          </div>
+          <div className="wrapper-weekdays" key={index}>
+            <div className="cell-wrapper-days" >
+              {moment()
+                .day(index + 1)
+                .format("ddd")}
+            </div>
           </div>
         ))}
       </div>
       <div className="container-grid">
-        {daysArray.map((dayItem, index) => {
+        {daysArray.map((dayItem) => {
           const isWeekend = dayItem.day() === 0 || dayItem.day() === 6;
           return (
             <div
@@ -48,18 +47,32 @@ function CalendarGrid({ startDay, today }) {
               key={dayItem.unix()}
             >
               <div className="row-in-cell">
-              <div
+                <div
                   className={`day-wrapper ${
-                    isCurrentMonth(dayItem)
-                      ? "current-month"
-                      : "other-month"
+                    isCurrentMonth(dayItem) ? "current-month" : "other-month"
                   }`}
                 >
-                  {!isCurrentDay(dayItem) && dayItem.format("D")}
-                  {isCurrentDay(dayItem) && (
+                  {isCurrentDay(dayItem) ? (
                     <div className="current-day">{dayItem.format("D")}</div>
+                  ) : (
+                    dayItem.format("D")
                   )}
                 </div>
+              </div>
+              <div className="event-list">
+              <div>Start: {dayItem.format('X')}</div>
+              {
+                events.filter(event => event.date >= dayItem.format('X') && event.date <= dayItem.clone().endOf('day').format('X'))
+                .map(event => (
+                  <li>
+                  <button key={event.id} className="event-list-btn">
+                   {event.title}
+                  </button>
+                  </li>
+                ))
+              }
+              <div>End: {dayItem.clone().endOf('day').format('X')}</div>
+
               </div>
             </div>
           );

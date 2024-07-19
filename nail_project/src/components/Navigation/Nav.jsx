@@ -1,15 +1,22 @@
-import React from 'react'
-import './Nav.scss'
+import "./Nav.scss";
 
 function Nav() {
   return (
     <nav className="container-navigation">
-      <h4>About me</h4>
-      <h4>Works</h4>
-      <h4>Price</h4>
-      <h4>Contacts</h4>
+      <h4>
+        <a href="#about_me">Обо мне</a>
+      </h4>
+      <h4>
+        <a href="#works">Мои работы</a>
+      </h4>
+      <h4>
+        <a href="#price">Прайс</a>
+      </h4>
+      <h4>
+        <a href="#contact">Контакты</a>
+      </h4>
     </nav>
-  )
+  );
 }
 
-export default Nav
+export default Nav;

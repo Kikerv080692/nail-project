@@ -1,11 +1,13 @@
-import React from 'react'
-import './HeaderCalendar.scss'
+import React from "react";
+import "./HeaderCalendar.scss";
+
+
 function HeaderCalendar() {
   return (
-    <div className='header-wrapper'>
+    <div className="header-wrapper">
       <>Header</>
     </div>
-  )
+  );
 }
 
-export default HeaderCalendar
+export default HeaderCalendar;

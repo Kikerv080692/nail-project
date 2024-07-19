@@ -5,12 +5,12 @@ import CalendarGrid from './CalendarGrid/CalendarGrid.jsx'
 import './Calendar.scss'
 
 
-function Calendar({startDay, today, prevHandlerDay, nextHandlerDay, todayHandlerDay}) {
+function Calendar({startDay, today, prevHandlerDay, nextHandlerDay, todayHandlerDay,totalDays,events}) {
   return (
     <div className='calendar-wrapper'>
       <HeaderCalendar/>
       <MonitorCalendar today={today} prevHandlerDay={prevHandlerDay} nextHandlerDay={nextHandlerDay} todayHandlerDay={todayHandlerDay}/>
-      <CalendarGrid startDay={startDay} today={today}/>
+      <CalendarGrid startDay={startDay} today={today} totalDays={totalDays} events={events}/>
       
     </div>
   )

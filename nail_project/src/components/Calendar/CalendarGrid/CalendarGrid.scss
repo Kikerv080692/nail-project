@@ -71,6 +71,26 @@
   align-items: center;
 }
 
+.event-list {
+  margin: unset;
+  list-style-position: inside;
+  padding-left: 4px;
+  &-btn {
+    position: relative;
+    left: -14px;
+    text-overflow: hidden;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 114px;
+    border: unset;
+    color: #DDDDDD;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+}
+
 @media (max-width: 767px) {
 }
 

@@ -1,12 +1,10 @@
-import Nav from "./components/Navigation/Nav.jsx";
+
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/Contacts/Contacts.jsx";
-import Header from "./components/Header/Header.jsx";
-import Price from "./components/Price/Price.jsx";
-import Nails from "./components/Nails/Nails.jsx";
-import moment from "moment";
-import Calendar from "./components/Calendar/Calendar.jsx";
-import { useState } from "react";
+import { Register } from "./components/Register/Register.jsx";
+import { Home } from "./pages/Home/Home.jsx";
+import { Login } from "./components/Login/Login.jsx";
+
 
 // console.log(moment())
 // console.log(moment().startOf('month').startOf('week'))
@@ -26,34 +24,19 @@ import { useState } from "react";
 //   calendar.push(day.clone());
 //   day.add(1, "day");
 // }
+const totalDays = 42;
+const url = "http://localhost:3000";
 
 function App() {
-  const [today , setToday] = useState(moment())
-  const startDay = today.clone().startOf("month").startOf("week");
-  const endDay = moment().endOf("month").endOf("week");
 
-  const prevHandlerDay = () => {
-    console.log('prev')
-    setToday((prev) => prev.clone().subtract(1, 'month'))
-  }
-  const todayHandlerDay = () => {
-    console.log('today')
-    setToday(moment())
-    
-  }
-  const nextHandlerDay = () => {
-    console.log('next')
-    setToday((prev) => prev.clone().add(1, 'month'))
-  }
   return (
-    <>
-      <Nav />
-      <Header />
-      <Nails />
-      <Price />
-      <Footer />
-      <Calendar startDay={startDay} today={today} prevHandlerDay={prevHandlerDay} todayHandlerDay={todayHandlerDay} nextHandlerDay={nextHandlerDay} />
-    </>
+    
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+     <Route path = 'register' element={<Register/>}/>
+     <Route path = 'login' element={<Login/>}/>
+    </Routes>
+    
   );
 }
 

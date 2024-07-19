@@ -18,7 +18,7 @@ const nails = {
 
 function Works() {
   return (
-    <div>
+    <div id="works">
       <Flickity
         className="Slider"
         elementType="div"
